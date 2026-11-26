@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://nikolamalesevit2026.github.io/NikolaMalesevIT2026/sitemap.xml
