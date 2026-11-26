@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="utf-8">
+  <title>Skijanje i snowboarding: vodič za početnike, oprema i skijališta u Srbiji</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700;800&family=Instrument+Sans:wght@400;500;600&display=swap">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --ink: #14232e;
+      --mute: #4d6171;
+      --ice: #cfe0ea;
+      --card: #ffffff;
+      --hot: #e8541c;
+      --hot-ink: #ffffff;
+      --line: #c3d3de;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: "Instrument Sans", sans-serif;
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      font-family: "Bricolage Grotesque", sans-serif;
+      line-height: 1.05;
+      margin: 0;
+    }
+
+    img {
+      display: block;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .wrap {
+      width: 1120px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 22px;
+      padding-right: 22px;
+    }
+
+    nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 3;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 22px;
+      color: #ffffff;
+    }
+
+    nav b {
+      font-family: "Bricolage Grotesque", sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+    }
+
+    nav div {
+      display: flex;
+      gap: 22px;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    nav a {
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      background-color: #9fb7c7;
+      background-image: url("https://images.unsplash.com/photo-1551524559-8af4e6624178?auto=format&fit=crop&w=1800&q=80");
+      background-position: center 30%;
+      background-size: cover;
+      color: #ffffff;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(180deg, rgba(10, 25, 36, 0.25), rgba(10, 25, 36, 0) 30%, rgba(10, 25, 36, 0.78));
+    }
+
+    .hero .wrap {
+      position: relative;
+      z-index: 2;
+      padding-bottom: 56px;
+      width: 100%;
+    }
+
+    .hero h1 {
+      font-size: 130px;
+      font-weight: 800;
+    }
+
+    .hero p {
+      width: 540px;
+      font-size: 22px;
+      margin: 18px 0 26px 0;
+      text-shadow: 0 1px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--hot);
+      color: var(--hot-ink);
+      font-weight: 600;
+      padding: 14px 26px;
+      border-radius: 999px;
+      text-decoration: none;
+      border: 0;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    section {
+      padding-top: 96px;
+      padding-bottom: 96px;
+    }
+
+    h2 {
+      font-size: 56px;
+      font-weight: 800;
+      width: 680px;
+    }
+
+    .lead {
+      width: 650px;
+      color: var(--mute);
+      margin-top: 18px;
+      margin-bottom: 0;
+    }
+
+    .sw {
+      display: inline-flex;
+      margin-top: 36px;
+      margin-bottom: 28px;
+      background-color: var(--ice);
+      border-radius: 999px;
+      padding: 5px;
+    }
+
+    .sw button {
+      font-family: "Instrument Sans", sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      border: 0;
+      background: none;
+      color: var(--ink);
+      padding: 11px 28px;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+
+    .sw button.active {
+      background-color: var(--ink);
+      color: var(--bg);
+    }
+
+    .pane {
+      display: none;
+      grid-template-columns: 1fr 1fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .pane.on {
+      display: grid;
+    }
+
+    .pane img {
+      border-radius: 6px;
+      width: 510px;
+      height: 620px;
+      object-fit: cover;
+    }
+
+    .pane h3 {
+      font-size: 42px;
+      margin-bottom: 14px;
+    }
+
+    .pane dl {
+      margin-top: 22px;
+      margin-bottom: 0;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 12px 22px;
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+    }
+
+    .pane dt {
+      font-weight: 600;
+    }
+
+    .pane dd {
+      margin: 0;
+      color: var(--mute);
+    }
+
+    .band {
+      background-color: var(--ice);
+    }
+
+    .terrain {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 22px;
+      margin-top: 48px;
+    }
+
+    .terrain figure {
+      margin: 0;
+      position: relative;
+      overflow: hidden;
+      border-radius: 6px;
+      height: 420px;
+      background-color: #88aaaa;
+    }
+
+    .terrain figure img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .terrain figcaption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 70px 22px 22px 22px;
+      color: #ffffff;
+      background: linear-gradient(transparent, rgba(8, 20, 30, 0.82));
+    }
+
+    .terrain h3 {
+      font-size: 30px;
+      margin-bottom: 6px;
+    }
+
+    .terrain p {
+      margin: 0;
+      font-size: 15.5px;
+      width: 380px;
+    }
+
+    .terrain .tall {
+      grid-row: span 2;
+      height: 862px;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .split img {
+      border-radius: 6px;
+      width: 500px;
+      height: 620px;
+      object-fit: cover;
+    }
+
+    .tl {
+      list-style: none;
+      margin-top: 30px;
+      margin-bottom: 0;
+      padding: 0;
+      border-left: 3px solid var(--hot);
+    }
+
+    .tl li {
+      padding-top: 0;
+      padding-right: 0;
+      padding-bottom: 22px;
+      padding-left: 22px;
+      position: relative;
+    }
+
+    .tl li::before {
+      content: "";
+      position: absolute;
+      left: -9px;
+      top: 8px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: var(--bg);
+      border: 3px solid var(--hot);
+    }
+
+    .tl strong {
+      font-family: "Bricolage Grotesque", sans-serif;
+      font-weight: 800;
+      font-size: 24px;
+      display: block;
+    }
+
+    .chk {
+      margin-top: 34px;
+      margin-bottom: 0;
+      padding: 0;
+      list-style: none;
+      width: 640px;
+    }
+
+    .chk li {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .chk label {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      padding: 16px 4px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .chk input {
+      width: 24px;
+      height: 24px;
+      accent-color: var(--hot);
+    }
+
+    .chk input:checked + span {
+      text-decoration: line-through;
+      color: var(--mute);
+    }
+
+    .bar {
+      height: 10px;
+      background-color: var(--ice);
+      border-radius: 9px;
+      width: 640px;
+      margin-top: 28px;
+      margin-bottom: 8px;
+      overflow: hidden;
+    }
+
+    .bar i {
+      display: block;
+      height: 100%;
+      width: 0;
+      background-color: var(--hot);
+    }
+
+    .places {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 30px;
+      margin-bottom: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .places li {
+      border: 1.5px solid var(--ink);
+      border-radius: 999px;
+      padding: 9px 20px;
+      font-weight: 500;
+    }
+
+    footer {
+      padding-top: 44px;
+      padding-bottom: 44px;
+      border-top: 1px solid var(--line);
+      color: var(--mute);
+      font-size: 14.5px;
+    }
+
+    .sh a {
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <nav>
+      <b>Planina</b>
+      <div>
+        <a href="#izbor">Skijanje ili snowboarding</a>
+        <a href="#tereni">Freeride i park</a>
+        <a href="#oprema">Oprema za skijanje</a>
+      </div>
+    </nav>
+    <div class="wrap">
+      <h1>Skijanje<br>i snowboarding</h1>
+      <p>Planina zove. Vodič kroz skijanje i snowboarding za početnike: skije ili daska, staza ili netaknut sneg, oprema i skijališta u Srbiji.</p>
+      <a class="btn" href="#izbor">Počni odavde</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="izbor">
+      <div class="wrap">
+        <h2>Skijanje ili snowboarding?</h2>
+        <p class="lead">Nema pogrešnog izbora, ali početak izgleda drugačije. Izaberi i uporedi.</p>
+
+        <div class="sw">
+          <button id="t-ski" class="active">Skijanje</button>
+          <button id="t-bord">Snowboarding</button>
+        </div>
+
+        <div class="pane on" id="p-ski">
+          <div>
+            <h3>Dve skije, dva štapa, stabilan početak.</h3>
+            <p>Noge rade nezavisno, pa se već prvog dana možeš kretati, kočiti i skretati bez mnogo padanja. Zato većina škola počinje baš ovde.</p>
+            <dl>
+              <dt>Prvi dan</dt>
+              <dd>Lakši. Plug i prvi skretanja stižu brzo.</dd>
+              <dt>Napredak</dt>
+              <dd>Ravnomeran, uz stalan rad na tehnici.</dd>
+              <dt>Najčešći padovi</dt>
+              <dd>Kolena i ramena. Podešene vezove proveri u servisu.</dd>
+              <dt>Za koga</dt>
+              <dd>Za one koji žele brzo da uživaju na stazi.</dd>
+            </dl>
+          </div>
+          <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=1000&q=80" alt="Skijanje na skijalištu">
+        </div>
+
+        <div class="pane" id="p-bord">
+          <div>
+            <h3>Jedna daska, oba stopala vezana.</h3>
+            <p>Prva dva do tri dana su najteža, jer učiš da držiš ravnotežu i ivicu daske. Posle toga napredak često krene brzo, a plutanje u dubokom snegu je posebna priča.</p>
+            <dl>
+              <dt>Prvi dan</dt>
+              <dd>Teži. Dosta sedenja i ustajanja.</dd>
+              <dt>Napredak</dt>
+              <dd>Spor početak, pa nagli skok.</dd>
+              <dt>Najčešći padovi</dt>
+              <dd>Šake, ručni zglobovi i trtica. Nosi štitnike.</dd>
+              <dt>Za koga</dt>
+              <dd>Za one koji vole fluidan, „surferski“ stil.</dd>
+            </dl>
+          </div>
+          <img src="https://images.unsplash.com/photo-1565992441121-4367c2967103?auto=format&fit=crop&w=1000&q=80" alt="Snowboarding za početnike">
+        </div>
+      </div>
+    </section>
+
+    <section id="tereni" class="band">
+      <div class="wrap">
+        <h2>Freeride, park i takmičenja</h2>
+        <p class="lead">Ista planina, potpuno različita iskustva. Većina ljudi na kraju proba sva tri.</p>
+
+        <div class="terrain">
+          <figure class="tall">
+            <img src="https://images.unsplash.com/photo-1522056615691-da7b8106c665?auto=format&fit=crop&w=1200&q=80" alt="Freeride skijanje">
+            <figcaption>
+              <h3>Freeride</h3>
+              <p>Van uređenih staza, u netaknutom snegu. Traži znanje o lavinama, pravu opremu i ortake ili vodiča.</p>
+            </figcaption>
+          </figure>
+
+          <figure>
+            <img src="https://images.unsplash.com/photo-1518608774889-b04d2abe7702?auto=format&fit=crop&w=1000&q=80" alt="Snowboarding u parku" style="object-position: 50% 40%;">
+            <figcaption>
+              <h3>Park</h3>
+              <p>Skokovi, šine i kutije. Počni od malih elemenata.</p>
+            </figcaption>
+          </figure>
+
+          <figure>
+            <img src="https://images.unsplash.com/photo-1605540436563-5bca919ae766?auto=format&fit=crop&w=1000&q=80" alt="Takmičenje u skijanju i snowboardingu">
+            <figcaption>
+              <h3>Takmičenja</h3>
+              <p>Na Red Bull Homerun 2025 u Norveškoj učesnici sami nose opremu uzbrdo.</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap split">
+        <div>
+          <h2>Istorija skijanja i snowboardinga</h2>
+          <ol class="tl">
+            <li>
+              <strong>Pre hiljade godina</strong>
+              Skijanje nastaje na severu Evrope i Azije kao način putovanja po snegu.
+            </li>
+            <li>
+              <strong>1965.</strong>
+              Sherman Poppen pravi „Snurfer“, dasku s užetom, kao igračku za decu.
+            </li>
+            <li>
+              <strong>1977.</strong>
+              Jake Burton Carpenter osniva Burton i razvija prve prave snowboard daske.
+            </li>
+            <li>
+              <strong>1998.</strong>
+              Snowboarding postaje olimpijski sport na Igrama u Naganu.
+            </li>
+          </ol>
+        </div>
+        <img src="https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?auto=format&fit=crop&w=1000&q=80" alt="Istorija snowboardinga">
+      </div>
+    </section>
+
+    <section id="oprema" class="band">
+      <div class="wrap">
+        <h2>Oprema za skijanje i snowboarding</h2>
+        <p class="lead">Štikliraj dok pakuješ. Radi isto za skije i za dasku.</p>
+
+        <div class="bar" id="pb">
+          <i id="pf"></i>
+        </div>
+        <p id="pt" style="margin: 0; color: var(--mute);">0 od 8 spakovano</p>
+
+        <ul class="chk" id="cl">
+          <li><label><input type="checkbox"><span>Kaciga</span></label></li>
+          <li><label><input type="checkbox"><span>Naočare ili maska</span></label></li>
+          <li><label><input type="checkbox"><span>Termo donji sloj</span></label></li>
+          <li><label><input type="checkbox"><span>Vodootporna jakna i pantalone</span></label></li>
+          <li><label><input type="checkbox"><span>Rukavice (i rezervne)</span></label></li>
+          <li><label><input type="checkbox"><span>Skipas</span></label></li>
+          <li><label><input type="checkbox"><span>Krema sa zaštitom od sunca</span></label></li>
+          <li><label><input type="checkbox"><span>Skije ili daska, štapovi i čizme (ili iznajmljivanje)</span></label></li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>Skijališta u Srbiji</h2>
+        <p class="lead">Skijališta u Srbiji, od najvećih do porodičnih. Pre puta proveri stanje staza i vremensku prognozu.</p>
+        <ul class="places">
+          <li>Kopaonik</li>
+          <li>Stara planina</li>
+          <li>Zlatibor</li>
+          <li>Divčibare</li>
+          <li>Tara</li>
+          <li>Goč</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p class="sh">
+        Podeli:
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://pyrex2004-source.github.io/NikolaMalesevIT2026/" target="_blank">Facebook</a> ·
+        <a href="https://twitter.com/intent/tweet?url=https://pyrex2004-source.github.io/NikolaMalesevIT2026/&text=Skijanje%20i%20snowboarding" target="_blank">X</a> ·
+        <a href="https://wa.me/?text=https://pyrex2004-source.github.io/NikolaMalesevIT2026/" target="_blank">WhatsApp</a>
+      </p>
+      <p>Skijaj u skladu sa svojim znanjem, nosi kacigu i prati uputstva ski-službe.</p>
+      <p>© 2026 Nikola Malešev</p>
+    </div>
+  </footer>
+
+  <script>
+    var btnSki = document.getElementById('t-ski');
+    var btnBord = document.getElementById('t-bord');
+    var paneSki = document.getElementById('p-ski');
+    var paneBord = document.getElementById('p-bord');
+
+    btnSki.addEventListener('click', function() {
+      btnSki.classList.add('active');
+      btnBord.classList.remove('active');
+      paneSki.classList.add('on');
+      paneBord.classList.remove('on');
+    });
+
+    btnBord.addEventListener('click', function() {
+      btnBord.classList.add('active');
+      btnSki.classList.remove('active');
+      paneBord.classList.add('on');
+      paneSki.classList.remove('on');
+    });
+
+    var checkboxes = document.querySelectorAll('#cl input[type="checkbox"]');
+    var progressFill = document.getElementById('pf');
+    var progressText = document.getElementById('pt');
+
+    function updateChecklist() {
+      var checkedCount = 0;
+      for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+          checkedCount++;
+        }
+      }
+      var percent = Math.round((checkedCount / checkboxes.length) * 100);
+      progressFill.style.width = percent + '%';
+      if (checkedCount === checkboxes.length) {
+        progressText.textContent = 'Sve spakovano. Srećan put!';
+      } else {
+        progressText.textContent = checkedCount + ' od ' + checkboxes.length + ' spakovano';
+      }
+    }
+
+    for (var i = 0; i < checkboxes.length; i++) {
+      checkboxes[i].addEventListener('change', updateChecklist);
+    }
+  </script>
+
+</body>
+</html>
